@@ -25,27 +25,7 @@ module mux_MemToReg(
 	input [1:0] sel,
 	output [31:0] out
     );
-	 
-	 always @(a or b or c or sel)
-		begin
-			case(sel)
-				2'b00:
-					begin
-						out = a;
-					end
-				2'b01:
-					begin
-						out = b;
-					end
-				2'b10:
-					begin
-						out = c;
-					end
-				default:
-					begin
-						out = 32'b0;
-					end
-			endcase
-		end
+		
+	assign out = (sel[0]) ? (sel[1] ? 32'b0 : c) : (sel[1] ? b : a);
 
 endmodule

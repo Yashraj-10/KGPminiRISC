@@ -25,12 +25,6 @@ module mux_imm(
 	output [16:0] imm
     );
 
-	always @ (mem_type or I_type or I27)
-		begin
-			if(I27)
-				imm = mem_type;
-			else
-				imm = I_type;
-		end
+	assign imm = I27 ? mem_type : I-type;
 
 endmodule

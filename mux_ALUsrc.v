@@ -25,12 +25,6 @@ module mux_ALUsrc(
 	output [31:0] b
     );
 	 
-	 always @(readData or imm or ALUsrc)
-		begin
-			if(ALUsrc)
-				b = readData2;
-			else
-				b = imm;
-		end
+	assign b = ALUsrc ? imm : readData2 ;
 
 endmodule
