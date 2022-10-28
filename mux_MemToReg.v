@@ -26,6 +26,6 @@ module mux_MemToReg(
 	output [31:0] out
     );
 		
-	assign out = (sel[0]) ? (sel[1] ? 32'b0 : c) : (sel[1] ? b : a);
+	assign out = (sel[0]) ? (sel[1] ? 32'b0 : b) : (sel[1] ? c : a);
 
 endmodule
