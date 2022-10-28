@@ -47,7 +47,7 @@ module alu(
     
     cla32 adder(.a(a), .b(b), .carryInput(), .sum(sum), .carryOutput(carry_out));
      
-    assign comp = ~a + 1'b1;
+    assign comp = ~b + 1'b1;
     assign XOR = a^b;
     assign AND = a&b;
     
