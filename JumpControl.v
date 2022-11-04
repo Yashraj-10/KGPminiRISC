@@ -19,9 +19,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module JumpControl(
-	input [2:0] flag,					// flag = [0-carry,1-zero,2-sign]
+	input [2:0] flag,					// flag = [2-sign,1-zero,0-carry]
 	input [2:0] CondJump,
-	output [0:0] JCout
+	output reg [0:0] JCout
     );
 
 	always@(*)

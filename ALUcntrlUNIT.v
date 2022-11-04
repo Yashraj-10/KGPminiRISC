@@ -50,7 +50,7 @@
 module ALUcntrlUNIT(
 	input [1:0] ALUop,
 	input [4:0] func,
-	output [3:0] ALUcntrl
+	output reg [3:0] ALUcntrl
     );
 
 	always @ (*)
