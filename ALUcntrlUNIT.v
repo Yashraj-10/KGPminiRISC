@@ -59,51 +59,51 @@ module ALUcntrlUNIT(
 			2'b00:
 				begin
 					case(func)
-						5'b00000:
+						5'b00000:								// add
 							begin
 								ALUcntrl <= 4'b0000;
 							end
-						5'b00001:
+						5'b00001:								// comp
 							begin
 								ALUcntrl <= 4'b0001;
 							end
-						5'b00010:
+						5'b00010:								// and
 							begin
 								ALUcntrl <= 4'b0010;
 							end
-						5'b00011:
+						5'b00011:								// xor
 							begin
 								ALUcntrl <= 4'b0011;
 							end
-						5'b00100:
+						5'b00100:								// shll
 							begin
 								ALUcntrl <= 4'b0110;
 							end
-						5'b00101:
+						5'b00101:								// shrl
 							begin
 								ALUcntrl <= 4'b0101;
 							end
-						5'b00110:
+						5'b00110:								// shllv
 							begin
 								ALUcntrl <= 4'b0110;
 							end
-						5'b00111:
+						5'b00111:								// shrlv
 							begin
 								ALUcntrl <= 4'b0101;
 							end
-						5'b01000:
+						5'b01000:								// shra
 							begin
 								ALUcntrl <= 4'b0111;
 							end
-						5'b01001:
+						5'b01001:								// shrav
 							begin
 								ALUcntrl <= 4'b0111;
 							end
-						5'b01010:
+						5'b01010:								// diff
 							begin
 								ALUcntrl <= 4'b00100;
 							end
-						default:
+						default:									// only flags
 							begin
 								ALUcntrl <= 4'b1000;
 							end
@@ -112,29 +112,33 @@ module ALUcntrlUNIT(
 			2'b01:
 				begin
 					case(func)
-						5'b00000:
+						5'b00000:								// addi
 							begin
 								ALUcntrl <= 4'b0000;
 							end
-						5'b00001:
+						5'b00001:								// compi
 							begin
 								ALUcntrl <= 4'b0001;
 							end
-						default:
+						default:									// only flags
 							begin
 								ALUcntrl <= 4'b1000;
 							end
 					endcase
 				end
-			2'b10:
+			2'b10:												// lw & sw ---> sum
 				begin
 					ALUcntrl <= 4'b0000;
 				end
-			2'b11:
+			2'b11:												// branch statements ---> only flags
 				begin
 					ALUcntrl <= 4'b1000;
 				end
 			deafult:
-				
+				begin
+					ALUcntrl <= 4'b1000;						// only flags
+				end
+		endcase
+	end
 	
 endmodule

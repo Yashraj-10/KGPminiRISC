@@ -38,7 +38,7 @@ module alu(
     input [31:0] b,
     input [4:0] shift,
     input [3:0] ALUcntrl,
-    output [2:0] flag,            //flag ==> [sign,zero,carry]
+    output [2:0] flag,            //flag ==> [0-carry,1-zero,2-sign]
     output [31:0] result
     );
      
