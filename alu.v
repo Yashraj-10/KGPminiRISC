@@ -59,54 +59,54 @@ module alu(
     
     always @(*)
         begin
-            flag[2] = a[31] ? 1'b1 : 1'b0;
-            flag[1] = a==32'd0 ? 1'b1 : 1'b0;
+            flag[2] <= a[31] ? 1'b1 : 1'b0;
+            flag[1] <= a==32'd0 ? 1'b1 : 1'b0;
             
             case(ALUcntrl)
                 4'b0000:
                     begin
-                        result = sum;
-                        flag[0] = carry_out;
+                        result <= sum;
+                        flag[0] <= carry_out;
                     end
                 4'b0001:
                     begin
-                        result = comp;
-                        flag[0] = 1'b0;
+                        result <= comp;
+                        flag[0] <= 1'b0;
                     end
                 4'b0010:
                     begin
-                        result = AND;
-                        flag[0] = 1'b0;
+                        result <= AND;
+                        flag[0] <= 1'b0;
                     end
                 4'b0011:
                     begin
-                        result = XOR;
-                        flag[0] = 1'b0;
+                        result <= XOR;
+                        flag[0] <= 1'b0;
                     end
                 4'b0100:
                     begin
-                        result = diffBit;
-                        flag[0] = 1'b0;
+                        result <= diffBit;
+                        flag[0] <= 1'b0;
                     end
                 4'b0101:
                     begin
-                        result = shiftR;
-                        flag[0] = 1'b0;
+                        result <= shiftR;
+                        flag[0] <= 1'b0;
                     end
                 4'b0110:
                     begin
-                        result = shiftL;
-                        flag[0] = 1'b0;
+                        result <= shiftL;
+                        flag[0] <= 1'b0;
                     end
                 4'b0111:
                     begin
-                        result = shiftRa;
-                        flag[0] = 1'b0;
+                        result <= shiftRa;
+                        flag[0] <= 1'b0;
                     end
                 default:
                     begin
-                        result = 32'd0;
-                        flag[0] = 1'b0;
+                        result <= 32'd0;
+                        flag[0] <= 1'b0;
                     end
             endcase
         end

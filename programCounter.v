@@ -1,4 +1,4 @@
-module signExtender(
+module programCounter(
 	input clk,
 	input rst,
 	input [31:0] PCin,
