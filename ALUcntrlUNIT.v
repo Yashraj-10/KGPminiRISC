@@ -101,7 +101,7 @@ module ALUcntrlUNIT(
 							end
 						5'b01010:								// diff
 							begin
-								ALUcntrl <= 4'b00100;
+								ALUcntrl <= 4'b0100;
 							end
 						default:									// only flags
 							begin
@@ -134,7 +134,7 @@ module ALUcntrlUNIT(
 				begin
 					ALUcntrl <= 4'b1000;
 				end
-			deafult:
+			default:
 				begin
 					ALUcntrl <= 4'b1000;						// only flags
 				end
