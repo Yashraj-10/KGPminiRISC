@@ -10,7 +10,7 @@ module register_file (
     input rst,                          // reset
     output [31:0] readData1,            //
     output [31:0] readData2,            // readData2 is the output of the register file
-    output [31:0] regfileoutput   // for debugging
+    
 );
 
     reg [31:0] registers[31:0];                         // 32 registers of 32 bits each (total 1024 bits)
@@ -40,7 +40,5 @@ module register_file (
     end
     assign readData1 = registers[rs];                   // readData1 is the output of the register file
     assign readData2 = registers[rt];                   // readData2 is the output of the register file
-    assign regfileoutput = registers[5'b11111];                   // for debugging
    
 endmodule
-
