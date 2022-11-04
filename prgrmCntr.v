@@ -35,7 +35,6 @@ module prgrmCntr(
 				begin
 					PCout <= PCin;
 				end
-			end
 		end
 
 endmodule
