@@ -23,7 +23,20 @@ module KGP_RISC(
 	input rst
     );
 	 
-	 mux_imm mux_imm1();
+	 wire [31:0] instruction;
+	 wire [15:0] imm;
+	 
+	 wire [0:0] RegWrite;
+	 wire [1:0] RegDst;
+	 wire [0:0] MemRead;
+	 wire [0:0] MemWrite;
+	 wire [1:0] MemToReg;
+	 wire [1:0] ALUop;
+	 wire [0:0] CondJump;
+	 wire [2:0] UncondJump;
+	 
+	 
+	 mux_imm mux_imm1(.mem_type(instruction[15:0]), .I_type(instruction[20:5]), .I27(instruction[27:27]), .imm(imm));
 	 
 	 mux_MemToReg mux_MemToReg1();
 	 
@@ -43,7 +56,7 @@ module KGP_RISC(
 	 
 	 branch branch1 ();
 	 
-	 cntrlUNIT cntrlUNIT1 ();
+	 cntrlUNIT cntrlUNIT1 (.opcode());
 	 
 	 signExtender signExtender1 ();
 	 

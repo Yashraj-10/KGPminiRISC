@@ -27,7 +27,7 @@ module branch(
     );
 
 	wire toJump;
-	wire PCin4;
+	wire [31:0] PCin4;
 	
 	assign PCin4 = PCin + 32'd4;
 	
