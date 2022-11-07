@@ -34,7 +34,7 @@ module cntrlUNIT(
 	always@(*)
 	 begin
 		case(opcode)
-			6'b000000:									//add,comp,and,xor,shll,shrl,shllv,shrlv,shra,shrav,diff
+			6'b000000:									//add,comp,and,xor,shllv,shrlv,shrav,diff
 				begin
 					RegWrite <= 1'b1 ;
 					RegDst <= 2'b00 ;
@@ -42,11 +42,12 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b00 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b00 ;
 				end
-			6'b000001:									//addi,compi
+			6'b000001:									//shll, shrl, shra, addi, compi
 				begin
 					RegWrite <= 1'b1 ;
 					RegDst <= 2'b00 ;
@@ -54,6 +55,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b01 ;
+					ALUsrc <= 1'b1 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b00 ;	
@@ -66,6 +68,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b01 ;
 					ALUop <= 2'b10 ;
+					ALUsrc <= 1'b1 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b00 ;
@@ -78,6 +81,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b1 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b10 ;
+					ALUsrc <= 1'b1 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b00 ;
@@ -90,6 +94,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b1 ;
 					AddrSel <= 2'b01;
@@ -102,6 +107,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b001 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b10;
@@ -114,6 +120,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b010 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b10;
@@ -126,6 +133,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b011 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b10;
@@ -138,6 +146,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b1 ;
 					AddrSel <= 2'b00;
@@ -150,6 +159,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b10 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b1 ;
 					AddrSel <= 2'b00;
@@ -162,6 +172,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b100 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b00;
@@ -174,6 +185,7 @@ module cntrlUNIT(
 					MemWrite <= 1'b0 ;
 					MemToReg <= 2'b00 ;
 					ALUop <= 2'b11 ;
+					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b101 ;
 					UncondJump <= 1'b0 ;
 					AddrSel <= 2'b00;
