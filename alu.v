@@ -36,7 +36,6 @@
 module alu(
     input [31:0] a,
     input [31:0] b,
-    input [4:0] shift,
     input [3:0] ALUcntrl,
     output reg[2:0] flag,            // flag = [2-sign,1-zero,0-carry]
     output reg[31:0] result
@@ -51,9 +50,9 @@ module alu(
     assign XOR = a^b;
     assign AND = a&b;
     
-    assign shiftL = a<<shift;
-    assign shiftR = a>>shift;
-    assign shiftRa = a>>>shift;
+    assign shiftL = a<<b;
+    assign shiftR = a>>b;
+    assign shiftRa = a>>>b;
     
     diff inst1(.a(a), .b(b), .diff(diffBit));
     
@@ -105,7 +104,7 @@ module alu(
                     end
                 default:
                     begin
-                         result <= 32'd0;
+                         result <= a;
                          flag[0] <= 1'b0;
                     end
             endcase

@@ -23,11 +23,11 @@ module branch(
     input UncondJump,
     input [31:0] PCin,
     input [31:0] JumpAddr,
+    output [31:0] PCin4
     output [31:0] PCnext
     );
 
 	wire toJump;
-	wire [31:0] PCin4;
 	
 	assign PCin4 = PCin + 32'd4;
 	

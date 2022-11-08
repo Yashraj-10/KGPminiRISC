@@ -29,6 +29,7 @@ module cntrlUNIT(
 	output reg [2:0] CondJump,
 	output reg [0:0] UncondJump,
 	output reg [1:0] AddrSel
+	output reg [0:0] ALUsrc;
     );
 	 
 	always@(*)
