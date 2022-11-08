@@ -26,12 +26,12 @@
 //	comp	| 000000		| 00001	|	0		|	0001
 //	and	| 000000		| 00010	|	0		|	0010
 //	xor	| 000000		| 00011	|	0		|	0011
-//	shll	| 000000		| 00100	|	0		|	0110
-//	shrl	| 000000		| 00101	|	0		|	0101
+//	shll	| 000001		| 00010	|	0		|	0110
+//	shrl	| 000001		| 00011	|	0		|	0101
 //	shllv	| 000000		| 00110	|	0		|	0110
 //	shrlv	| 000000		| 00111	|	0		|	0101
-//	shra	| 000000		| 01000	|	0		|	0101
-//	shrav	| 000000		| 01001	|	0		|	0101
+//	shra	| 000001		| 00100	|	0		|	0111
+//	shrav	| 000000		| 01001	|	0		|	0111
 // diff	| 000000		| 01010	|	0		|	0100
 //	addi	| 000001		| 00000	|	1		|	0000
 // compi	| 000001		| 00001	|	1		|	0001
@@ -45,6 +45,20 @@
 // bl		| 001001		| 	--		|	3		|	1000
 // bcy	| 001010		| 	--		|	3		|	1000
 // bncy	| 001011		| 	--		|	3		|	1000
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+//        Operation                        |    ALU Control Required
+//--------------------------------------------------------------------------------
+//        Sum                              |    0000 -- 0
+//        Compliment                       |    0001 -- 1
+//        AND                              |    0010 -- 2
+//        XOR                              |    0011 -- 3
+//        diff                             |    0100 -- 4
+//        Right Shift                      |    0101 -- 5
+//        Left Shift                       |    0110 -- 6
+//        Arithematic Right Shift          |    0111 -- 7
+//        Only Flags                       |    any --- 8+
 //////////////////////////////////////////////////////////////////////////////////
 
 module ALUcntrlUNIT(
@@ -75,14 +89,14 @@ module ALUcntrlUNIT(
 							begin
 								ALUcntrl <= 4'b0011;
 							end
-						5'b00100:								// shll
-							begin
-								ALUcntrl <= 4'b0110;
-							end
-						5'b00101:								// shrl
-							begin
-								ALUcntrl <= 4'b0101;
-							end
+						// 5'b00100:								// shll
+						// 	begin
+						// 		ALUcntrl <= 4'b0110;
+						// 	end
+						// 5'b00101:								// shrl
+						// 	begin
+						// 		ALUcntrl <= 4'b0101;
+						// 	end
 						5'b00110:								// shllv
 							begin
 								ALUcntrl <= 4'b0110;
@@ -91,10 +105,10 @@ module ALUcntrlUNIT(
 							begin
 								ALUcntrl <= 4'b0101;
 							end
-						5'b01000:								// shra
-							begin
-								ALUcntrl <= 4'b0111;
-							end
+						// 5'b01000:								// shra
+						// 	begin
+						// 		ALUcntrl <= 4'b0111;
+						// 	end
 						5'b01001:								// shrav
 							begin
 								ALUcntrl <= 4'b0111;
@@ -120,7 +134,19 @@ module ALUcntrlUNIT(
 							begin
 								ALUcntrl <= 4'b0001;
 							end
-						default:									// only flags
+						5'b00010:								// shll
+							begin
+								ALUcntrl <= 4'b0110;
+							end
+						5'b00011:								// shrl
+							begin
+								ALUcntrl <= 4'b0101;
+							end
+						5'b00100:								// shra
+							begin
+								ALUcntrl <= 4'b0111;
+							end
+						default:								// only flags
 							begin
 								ALUcntrl <= 4'b1000;
 							end
