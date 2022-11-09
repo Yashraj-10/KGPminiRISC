@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 module signExtender(
 	input [15:0] extend,
-	output [31:0] extended
+	output reg [31:0] extended
     );
 	
-	reg [31:0] extended;
+	//reg [31:0] extended;
 	
 	always @ (extend)
 		begin

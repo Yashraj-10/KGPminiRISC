@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    13:16:14 11/04/2022 
+// Create Date:    22:41:22 11/08/2022 
 // Design Name: 
-// Module Name:    branch 
+// Module Name:    dff 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,21 +18,20 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module branch(
-    input JCout,
-    input UncondJump,
-    input [31:0] PCin,
-    input [31:0] JumpAddr,
-    output [31:0] PCin4,
-    output [31:0] PCnext
+module dff(
+input [31:0] in,
+output[31:0] out,
+input clk
     );
+	 
+	 reg[31:0] buffer = 32'b0;
+	 
+	 always@(posedge clk)
+	 begin
+		buffer = in;
+	 end
+	 
+	 assign out = buffer;
 
-	wire toJump;
-	
-	assign PCin4 = PCin + 32'd1;
-	
-	assign toJump = UncondJump | JCout;
-	
-	assign PCnext = (toJump)? JumpAddr : PCin4 ;
 
 endmodule

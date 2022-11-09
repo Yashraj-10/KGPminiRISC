@@ -9,7 +9,7 @@ module register_file (
     input clk,                          // clock
     input rst,                          // reset
     output [31:0] readData1,            //
-    output [31:0] readData2,            // readData2 is the output of the register file
+    output [31:0] readData2             // readData2 is the output of the register file
     
 );
 
@@ -30,9 +30,9 @@ module register_file (
         else begin
             if (RegWrite) begin                         // write to the register file
                 case (RegDst)                           // select the destination register
-                    2'b00: registers[rs] <= WriteData;  //  rs
-                    2'b01: registers[rt] <= WriteData;  //  rt
-                    2'b10: registers[31] <= WriteData;  //  $ra   
+                    2'b00: registers[rs] = WriteData;  //  rs
+                    2'b01: registers[rt] = WriteData;  //  rt
+                    2'b10: registers[31] = WriteData;  //  $ra   
                     2'b11: ;                            //  none
                 endcase
             end

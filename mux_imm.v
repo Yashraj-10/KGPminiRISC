@@ -19,10 +19,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module mux_imm(
-	input [16:0] mem_type,
-	input [16:0] I_type,
+	input [15:0] mem_type,
+	input [15:0] I_type,
 	input [0:0] I27,
-	output [16:0] imm
+	output [15:0] imm
     );
 
 	assign imm = I27 ? mem_type : I_type;

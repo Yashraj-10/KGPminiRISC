@@ -28,8 +28,9 @@ module cntrlUNIT(
 	output reg [3:0] ALUop,
 	output reg [2:0] CondJump,
 	output reg [0:0] UncondJump,
-	output reg [1:0] AddrSel
-	output reg [0:0] ALUsrc;
+	output reg [1:0] AddrSel,
+	output reg [0:0] ALUsrc,
+	output reg [0:0] halt
     );
 	 
 	always@(*)
@@ -46,6 +47,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00 ;
 				end
 			6'b000001:									//shll, shrl, shra, addi, compi
@@ -59,6 +61,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b1 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00 ;	
 				end
 			6'b000010:									//lw
@@ -72,6 +75,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b1 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00 ;
 				end
 			6'b000011:									//sw
@@ -85,6 +89,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b1 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00 ;
 				end
 			6'b000100:									//br
@@ -98,6 +103,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b1 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b01;
 				end
 			6'b000101:									//bltz
@@ -111,6 +117,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b001 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b10;
 				end
 			6'b000110:									//bz
@@ -124,6 +131,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b010 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b10;
 				end
 			6'b000111:									//bnz
@@ -137,6 +145,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b011 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b10;
 				end
 			6'b001000:									//b
@@ -150,6 +159,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b1 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00;
 				end
 			6'b001001:									//bl
@@ -163,6 +173,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b000 ;
 					UncondJump <= 1'b1 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00;
 				end
 			6'b001010:									//bcy
@@ -176,6 +187,7 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b100 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00;
 				end
 			6'b001011:									//bncy
@@ -189,7 +201,22 @@ module cntrlUNIT(
 					ALUsrc <= 1'b0 ;
 					CondJump <= 3'b101 ;
 					UncondJump <= 1'b0 ;
+					halt <= 1'b0 ;
 					AddrSel <= 2'b00;
+				end
+			6'b111111:									//add,comp,and,xor,shllv,shrlv,shrav,diff
+				begin
+					RegWrite <= 1'b0 ;
+					RegDst <= 2'b00 ;
+					MemRead <= 1'b0 ;
+					MemWrite <= 1'b0 ;
+					MemToReg <= 2'b00 ;
+					ALUop <= 2'b00 ;
+					ALUsrc <= 1'b0 ;
+					CondJump <= 3'b000 ;
+					UncondJump <= 1'b0 ;
+					halt <= 1'b1 ;
+					AddrSel <= 2'b00 ;
 				end
 			endcase
 		end

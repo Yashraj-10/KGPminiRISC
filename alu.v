@@ -54,7 +54,7 @@ module alu(
     assign shiftR = a>>b;
     assign shiftRa = a>>>b;
     
-    diff inst1(.a(a), .b(b), .diff(diffBit));
+    diff inst1(.a(a), .b(b), .diffBit(diffBit));
     
     always @(*)
         begin
@@ -83,10 +83,10 @@ module alu(
                          flag[0] <= 1'b0;
                     end
                 4'b0100:
-                    begin
-                         result <= diffBit;
-                         flag[0] <= 1'b0;
-                    end
+                   begin
+                        result <= diffBit;
+                        flag[0] <= 1'b0;
+                   end
                 4'b0101:
                     begin
                          result <= shiftR;
