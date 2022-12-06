@@ -1,0 +1,37 @@
+net "clk" loc = "p76";
+net "reset" loc = "p108";
+
+net "cont" loc = "p189";
+
+net "out[0]" loc = "p139";
+net "out[1]" loc = "p140";
+net "out[2]" loc = "p137";
+net "out[3]" loc = "p138";
+net "out[4]" loc = "p133";
+net "out[5]" loc = "p135";
+net "out[6]" loc = "p131";
+net "out[7]" loc = "p132";
+net "out[8]" loc = "p149";
+net "out[9]" loc = "p150";
+net "out[10]" loc = "p147";
+net "out[11]" loc = "p148";
+net "out[12]" loc = "p144";
+net "out[13]" loc = "p146";
+net "out[14]" loc = "p141";
+net "out[15]" loc = "p143";
+net "out[16]" loc = "p181";
+net "out[17]" loc = "p176";
+net "out[18]" loc = "p172";
+net "out[19]" loc = "p175";
+net "out[20]" loc = "p169";
+net "out[21]" loc = "p168";
+net "out[22]" loc = "p167";
+net "out[23]" loc = "p171";
+net "out[24]" loc = "p165";
+net "out[25]" loc = "p166";
+net "out[26]" loc = "p161";
+net "out[27]" loc = "p162";
+net "out[28]" loc = "p155";
+net "out[29]" loc = "p156";
+net "out[30]" loc = "p152";
+net "out[31]" loc = "p154";
